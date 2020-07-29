@@ -31,11 +31,11 @@ class PropertyInformation extends Component {
             longitude: null
         }
 
-        this.submit = this.submit.bind(this);
         this.loadCountries = this.loadCountries.bind(this);
         this.updateImage = this.updateImage.bind(this);
         this.updateCountry = this.updateCountry.bind(this);
         this.updateState = this.updateState.bind(this);
+        this.submit = this.submit.bind(this);
     }
 
     loadCountries() {
@@ -149,10 +149,9 @@ class PropertyInformation extends Component {
     }
 
     submit(e) {
-        // handle submit for login
-        
         e.preventDefault();
-        const data = this.state;
+
+        this.props.nextStep(this.state);
     }
 
     componentDidMount() {
@@ -293,11 +292,11 @@ class PropertyInformation extends Component {
 
                             <Location
                                 address={`${this.state.country}, ${this.state.state}, ${this.state.city}, `}
-                            />
+                            />                            
 
                             <Controls>
-                                <Span>Previous</Span>
-                                <Span>Save as draft</Span>
+                                <Span disabled>Previous</Span>
+                                <Span onClick={() => this.props.saveDraft(this.state)}>Save as draft</Span>
 
                                 <button>Proceed</button>
                             </Controls>

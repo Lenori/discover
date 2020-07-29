@@ -6,14 +6,6 @@ export const Content = styled.div`
 
 export const Half = styled.div`
     width: 40%;
-
-    @media (max-width: 1600px) {
-        width: 48%;
-    }
-
-    @media (max-width: 1250px) {
-        width: 100%
-    }
 `;
 
 export const Form = styled.div`
@@ -28,10 +20,6 @@ export const Form = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-        @media (max-width: 900px) {
-            flex-direction: column;
-        }
     }
 
     p {
@@ -69,83 +57,60 @@ export const Form = styled.div`
         align-items: flex-start;
         justify-content: space-between;
         width: 100%;
-        color: var(--primary);  
-
-        @media (max-width: 1250px) {
-            flex-direction: column;
-        }  
-    }
-`;
-
-export const ImageInput = styled.div`
-    width: 100% !important;
-    height: 200px !important;
-    background-color: #f3f3f3;
-    border: 1px dashed #cccccc !important;
-    margin: 0 0 40px 0;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 200px;
-
-    @media (max-width: 1900px) {
-        padding: 0 150px;
-    }
-
-    @media (max-width: 1650px) {
-        padding: 0 100px;
-    }
-
-    @media (max-width: 800px) {
-        svg {
-            display: none;
-        }
-    }
-
-    input {
-        height: 100%;
-        margin: 0;
-        background-color: red;
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0;
-    }
-
-    p {
-        color: var(--secondary);
-        font-weight: 700;
-        font-size: 25px;
-    }
-
-    svg {
-        color: var(--secondary);
-        font-size: 25px;
-    }
-`;
-
-export const ImagePreview = styled.div`
-    
-    img {
-        max-width: 100%;
-    }
-
-    p {
-        color: var(--secondary);
-        font-weight: 700;
-        margin: 0 0 40px 0;
-        font-size: 15px;
-        cursor: pointer;
+        color: var(--primary);    
     }
 `;
 
 export const HalfInput = styled.div`
     width: 48%;
     float: left;
+    position: relative;
 
-    @media (max-width: 900px) {
-        width: 100%;
+    ${props => props.noTitle && css `
+        margin-top: 30px !important;
+    `}
+
+    ${props => props.withIcon && css `
+        input {
+            padding: 20px 20px 20px 80px !important;
+        }
+
+        h1 {
+            position: absolute;
+            bottom: 50px;
+            left: 25px;
+            font-size: 30px;
+            color: #c1c1c1;
+            border-right: 1px solid;
+            padding-right: 20px;
+        }
+    `}
+`;
+
+export const Checkbox = styled.div`
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    width: 100%;
+    color: var(--primary);
+    margin: 0 0 30px 0;
+
+    input {
+        width: 20px;
+        height: 30px;
+        margin: 0;        
+        color: var(--primary);
+    }
+
+    p {
+        font-weight: 300;
+        font-size: 20px;
+        margin: 0 0 0 10px;
+
+        a {
+            color: var(--secondary);
+            font-weight: 700;
+        }
     }
 `;
 
@@ -162,10 +127,6 @@ export const Controls = styled.div`
         width: 50%;
         margin: 0;
     }
-
-    @media (max-width: 900px) {
-        flex-direction: column;
-    }
 `;
 
 export const Span = styled.span`
@@ -174,10 +135,6 @@ export const Span = styled.span`
     font-size: 18px;
     display: block;
     cursor: pointer;
-
-    @media (max-width: 900px) {
-        margin: 0 0 40px;
-    }
 
     ${props => props.disabled && css `
         color: grey;

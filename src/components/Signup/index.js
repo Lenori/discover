@@ -95,7 +95,7 @@ class Signup extends Component {
 
                             <Checkbox>
                                 <input required type="checkbox"></input>
-                                <p>I accepts <a href='#'>Terms & Conditions</a> and <a href='#'>Privacy Policy</a></p>
+                                <p>I accept <a href='#'>Terms & Conditions</a> and <a href='#'>Privacy Policy</a></p>
                             </Checkbox>
 
                             <button>Get started</button>

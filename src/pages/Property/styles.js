@@ -7,4 +7,8 @@ export const Content = styled.div`
     width: 100%;
     flex-direction: column;
     padding: 90px;
+
+    @media (max-width: 900px) {
+        padding: 50px 30px;
+    }
 `;
