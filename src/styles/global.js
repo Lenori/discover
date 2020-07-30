@@ -20,6 +20,7 @@ export default createGlobalStyle`
     :root {
         --primary: #2d364c;
         --secondary: #ff8913;
+        --tertiary: #efefef;
     }
 
     body {

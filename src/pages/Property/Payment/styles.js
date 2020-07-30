@@ -6,6 +6,14 @@ export const Content = styled.div`
 
 export const Half = styled.div`
     width: 40%;
+
+    @media (max-width: 1600px) {
+        width: 48%;
+    }
+
+    @media (max-width: 1250px) {
+        width: 100%
+    }
 `;
 
 export const Form = styled.div`
@@ -20,6 +28,10 @@ export const Form = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        @media (max-width: 900px) {
+            flex-direction: column;
+        }
     }
 
     p {
@@ -57,7 +69,11 @@ export const Form = styled.div`
         align-items: flex-start;
         justify-content: space-between;
         width: 100%;
-        color: var(--primary);    
+        color: var(--primary);
+
+        @media (max-width: 1250px) {
+            flex-direction: column;
+        }   
     }
 `;
 
@@ -65,6 +81,10 @@ export const HalfInput = styled.div`
     width: 48%;
     float: left;
     position: relative;
+
+    @media (max-width: 900px) {
+        width: 100%;
+    }
 
     ${props => props.noTitle && css `
         margin-top: 30px !important;
@@ -127,6 +147,10 @@ export const Controls = styled.div`
         width: 50%;
         margin: 0;
     }
+
+    @media (max-width: 900px) {
+        flex-direction: column;
+    }
 `;
 
 export const Span = styled.span`
@@ -135,6 +159,10 @@ export const Span = styled.span`
     font-size: 18px;
     display: block;
     cursor: pointer;
+
+    @media (max-width: 900px) {
+        margin: 0 0 40px;
+    }
 
     ${props => props.disabled && css `
         color: grey;
