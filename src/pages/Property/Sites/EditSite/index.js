@@ -3,9 +3,9 @@ import InputMask from 'react-input-mask';
 
 import {toast} from 'react-toastify';
 
-import {Content, Half, Form, HalfInput, Checkbox, Controls, Span} from './styles';
+import {Content, Half, Form, Site, Header, Body, Info, SitesList, SiteItem, HalfInput, Checkbox, Controls, Span} from './styles';
 
-class New extends Component {
+class Edit extends Component {
     constructor() {
         super();
 
@@ -14,40 +14,75 @@ class New extends Component {
             price: null,
             pax: null,
             rv: null,
+            siteName: null,
+            siteRV: null,
+            sitePax: null,
+            priceNight: null,
             weekDiscount: null,
             monthDiscount: null,
-            wheel: false,
-            classA: false,
-            classB: false,
-            classC: false,
-            popup: false,
-            tent: false,
-            toy: false,
-            travelTrailer: false,
-            salesTax: false,
-            stateTax: false,
-            countryTax: false,
-            otherTax: false
+            wheel: null,
+            classA: null,
+            classB: null,
+            classC: null,
+            popup: null,
+            tent: null,
+            toy: null,
+            travelTrailer: null,
+            salesTax: null,
+            stateTax: null,
+            countryTax: null,
+            otherTax: null
         }
-
-        this.submit = this.submit.bind(this);
     }
 
     submit(e) {
         e.preventDefault();
         const data = this.state;
 
-        if (
-            !data.title ||
-            !data.price ||
-            !data.pax ||
-            !data.rv
-        ) {
+        if ( 
+            !data.siteName ||
+            !data.siteRV ||
+            !data.sitePax ||
+            !data.priceNight
+            ) {
             toast.error('Please fill all required fields.');
             return;
         }
 
-        this.props.addSite(data);
+        delete data.title;
+        delete data.price;
+        delete data.pax;
+        delete data.rv;
+
+        this.props.editSite(this.props.index, this.props.siteIndex, data);
+    }
+
+    componentDidMount() {
+        this.setState({
+            title: this.props.site.title,
+            price: this.props.site.price,
+            pax: this.props.site.pax,
+            rv: this.props.site.rv,
+            siteName: this.props.site.sites[this.props.siteIndex].siteName,
+
+            siteRV: this.props.site.sites[this.props.siteIndex].siteRV ? this.props.site.sites[this.props.siteIndex].siteRV : null,
+            priceNight: this.props.site.sites[this.props.siteIndex].priceNight ? this.props.site.sites[this.props.siteIndex].priceNight : null,
+            sitePax: this.props.site.sites[this.props.siteIndex].sitePax ? this.props.site.sites[this.props.siteIndex].sitePax : null,
+            weekDiscount: this.props.site.sites[this.props.siteIndex].weekDiscount ? this.props.site.sites[this.props.siteIndex].weekDiscount : null,
+            monthDiscount: this.props.site.sites[this.props.siteIndex].monthDiscount ? this.props.site.sites[this.props.siteIndex].monthDiscount : null,
+            wheel: this.props.site.sites[this.props.siteIndex].wheel ? this.props.site.sites[this.props.siteIndex].wheel : null,
+            classA: this.props.site.sites[this.props.siteIndex].classA ? this.props.site.sites[this.props.siteIndex].classA : null,
+            classB: this.props.site.sites[this.props.siteIndex].classB ? this.props.site.sites[this.props.siteIndex].classB : null,
+            classC: this.props.site.sites[this.props.siteIndex].classC ? this.props.site.sites[this.props.siteIndex].classC : null,
+            popup: this.props.site.sites[this.props.siteIndex].popup ? this.props.site.sites[this.props.siteIndex].popup : null,
+            tent: this.props.site.sites[this.props.siteIndex].tent ? this.props.site.sites[this.props.siteIndex].tent : null,
+            toy: this.props.site.sites[this.props.siteIndex].toy ? this.props.site.sites[this.props.siteIndex].toy : null,
+            travelTrailer: this.props.site.sites[this.props.siteIndex].travelTrailer ? this.props.site.sites[this.props.siteIndex].travelTrailer : null,
+            salesTax: this.props.site.sites[this.props.siteIndex].salesTax ? this.props.site.sites[this.props.siteIndex].salesTax : null,
+            stateTax: this.props.site.sites[this.props.siteIndex].stateTax ? this.props.site.sites[this.props.siteIndex].stateTax : null,
+            countryTax: this.props.site.sites[this.props.siteIndex].countryTax ? this.props.site.sites[this.props.siteIndex].countryTax : null,
+            otherTax: this.props.site.sites[this.props.siteIndex].otherTax ? this.props.site.sites[this.props.siteIndex].otherTax : null
+        });      
     }
 
     render() {
@@ -56,16 +91,39 @@ class New extends Component {
                 <Form>
                     <form onSubmit={(e) => this.submit(e)}>
                         <Half>
-                        <section>
+                            <Site>
+                                <Header>
+                                    <h2>{this.state.title}</h2>
+                                    <p>${this.state.price}</p>
+                                </Header>
+                                <Body>
+                                    <Info>
+                                        <p>{this.state.pax} Pax</p>
+                                        <p>{this.state.rv} ft Max Length</p>
+                                    </Info>
+                                </Body>
+                                <SitesList>
+                                    <SiteItem>
+                                        <h2>{this.state.siteName}</h2>
+                                    </SiteItem>
+                                </SitesList>
+                            </Site>
+                        </Half>
+                        <Half>
+                            <section>
                                 <HalfInput>
                                     <p>Site name*</p>
-                                    <input onChange={(e) => this.setState({siteName: e.target.value})}></input>
+                                    <input
+                                        value={this.state.siteName}
+                                        onChange={(e) => this.setState({siteName: e.target.value})}
+                                    />
                                 </HalfInput>
                                 <HalfInput withIcon>
-                                    <p>Rate per night*</p>
+                                    <p>Price per night*</p>
                                     <InputMask
                                         mask="99.99"
-                                        onChange={(e) => this.setState({rate: e.target.value})}
+                                        value={this.state.priceNight ? this.state.priceNight : ''}
+                                        onChange={(e) => this.setState({priceNight: e.target.value})}
                                     />
                                     <h1>$</h1>
                                 </HalfInput>
@@ -75,14 +133,16 @@ class New extends Component {
                                     <p>Max occupancy*</p>
                                     <InputMask
                                         mask="99"
-                                        onChange={(e) => this.setState({pax: e.target.value})}
+                                        value={this.state.sitePax ? this.state.sitePax : ''}
+                                        onChange={(e) => this.setState({sitePax: e.target.value})}
                                     />
                                 </HalfInput>
                                 <HalfInput withIcon>
                                     <p>RV max length*</p>
                                     <InputMask
                                         mask="99"
-                                        onChange={(e) => this.setState({rv: e.target.value})}
+                                        value={this.state.siteRV ? this.state.siteRV : ''}
+                                        onChange={(e) => this.setState({siteRV: e.target.value})}
                                     />
                                     <h1>Ft</h1>
                                 </HalfInput>
@@ -92,6 +152,7 @@ class New extends Component {
                                     <p>7 nights discount</p>
                                     <InputMask
                                         mask="99"
+                                        value={this.state.weekDiscount ? this.state.weekDiscount : ''}
                                         onChange={(e) => this.setState({weekDiscount: e.target.value})}
                                     />
                                     <h1>%</h1>
@@ -100,17 +161,17 @@ class New extends Component {
                                     <p>30 nights discount</p>
                                     <InputMask
                                         mask="99"
+                                        value={this.state.monthDiscount ? this.state.monthDiscount : ''}
                                         onChange={(e) => this.setState({monthDiscount: e.target.value})}
                                     />
                                     <h1>%</h1>
                                 </HalfInput>
                             </section>
-                        </Half>
-                        <Half>
+                            
                             <section>
                                 <Checkbox>
                                     <input
-                                        onChange={() => this.setState({wheel: !this.state.wheel})}
+                                        checked={this.state.wheel}
                                         onChange={() => this.setState({wheel: !this.state.wheel})}
                                         type="checkbox"
                                         name="wheel"
@@ -119,6 +180,7 @@ class New extends Component {
                                 </Checkbox>
                                 <Checkbox>
                                     <input
+                                        checked={this.state.classA}
                                         onChange={() => this.setState({classA: !this.state.classA})}
                                         type="checkbox"
                                         name="classA"
@@ -130,6 +192,7 @@ class New extends Component {
                             <section>
                                 <Checkbox>
                                     <input
+                                        checked={this.state.classB}
                                         onChange={() => this.setState({classB: !this.state.classB})}
                                         type="checkbox"
                                         name="classB"
@@ -138,6 +201,7 @@ class New extends Component {
                                 </Checkbox>
                                 <Checkbox>
                                     <input
+                                        checked={this.state.classC}
                                         onChange={() => this.setState({classC: !this.state.classC})}
                                         type="checkbox"
                                         name="classC"
@@ -149,6 +213,7 @@ class New extends Component {
                             <section>
                                 <Checkbox>
                                     <input
+                                        checked={this.state.popup}
                                         onChange={() => this.setState({popup: !this.state.popup})}
                                         type="checkbox"
                                         name="popup"
@@ -157,6 +222,7 @@ class New extends Component {
                                 </Checkbox>
                                 <Checkbox>
                                     <input
+                                        checked={this.state.tent}
                                         onChange={() => this.setState({tent: !this.state.tent})}
                                         type="checkbox"
                                         name="tent"
@@ -168,6 +234,7 @@ class New extends Component {
                             <section>
                                 <Checkbox>
                                     <input
+                                        checked={this.state.toy}
                                         onChange={() => this.setState({toy: !this.state.toy})}
                                         type="checkbox"
                                         name="toy"
@@ -176,6 +243,7 @@ class New extends Component {
                                 </Checkbox>
                                 <Checkbox>
                                     <input
+                                        checked={this.state.travelTrailer}
                                         onChange={() => this.setState({travelTrailer: !this.state.travelTrailer})}
                                         type="checkbox"
                                         name="travelTrailer"
@@ -187,6 +255,7 @@ class New extends Component {
                             <section>
                                 <Checkbox>
                                     <input
+                                        checked={this.state.salesTax}
                                         onChange={() => this.setState({salesTax: !this.state.salesTax})}
                                         type="checkbox"
                                         name="salesTax"
@@ -195,6 +264,7 @@ class New extends Component {
                                 </Checkbox>
                                 <Checkbox>
                                     <input
+                                        checked={this.state.stateTax}
                                         onChange={() => this.setState({stateTax: !this.state.stateTax})}
                                         type="checkbox"
                                         name="stateTax"
@@ -206,6 +276,7 @@ class New extends Component {
                             <section>
                                 <Checkbox>
                                     <input
+                                        checked={this.state.countryTax}
                                         onChange={() => this.setState({countryTax: !this.state.countryTax})}
                                         type="checkbox"
                                         name="countryTax"
@@ -214,6 +285,7 @@ class New extends Component {
                                 </Checkbox>
                                 <Checkbox>
                                     <input
+                                        checked={this.state.otherTax}
                                         onChange={() => this.setState({otherTax: !this.state.otherTax})}
                                         type="checkbox"
                                         name="otherTax"
@@ -235,4 +307,4 @@ class New extends Component {
     }
 }
 
-export default New;
+export default Edit;

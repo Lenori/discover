@@ -25,7 +25,7 @@ export const Form = styled.div`
 export const Items = styled.div`
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 50px 0;
@@ -97,7 +97,7 @@ export const Info = styled.div`
 `;
 
 export const Buttons = styled.div`
-    width: 20%;
+    width: 40%;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -109,6 +109,49 @@ export const Buttons = styled.div`
     @media (max-width: 1250px) {
         width: 30%;
     }
+
+    p {
+        font-weight: 600;
+        font-size: 20px;
+        color: var(--secondary);
+        cursor: pointer;
+
+        &:last-of-type {
+            color: #ff6464 !important;
+        }
+    }
+
+    input {
+        border: none;
+        margin: 0;
+        background-color: transparent;
+        border: 1px solid white;
+        border-radius: 8px;
+        height: 30px;
+        width: 150px;
+        color: white;
+        padding: 10px;
+    }
+`;
+
+export const SitesList = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin: 30px 0 0 0;
+`;
+
+export const SiteItem = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #161f35;
+    margin: 10px 0 0 0;
 
     p {
         font-weight: 600;

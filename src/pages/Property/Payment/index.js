@@ -11,38 +11,26 @@ class Payment extends Component {
         super();
 
         this.state = {
-            timeBefore: null,
-            timeBeforeType: null,
-            timeBeforeTypes: [
-                {label: 'Minutes', value: 'Minutes'},
-                {label: 'Hours', value: 'Hours'},
-                {label: 'Days', value: 'Days'}
-            ],
-            pets: false,
-            currency: null,
-            americanExpress: false,
-            maestro: false,
-            visa: false,
-            discover: false,
-            euro: false,
-            unionPay: false,
-            diners: false,
-            jcb: false,
-            invoiceName: null
+            rateName: null,
+            invoiceName: null,
+            depositOptions: [],
+            deposit: null,
+            cancellation: null,
+            pet: null,
+            guest: null,
+            standardRate: false
         }
 
-        this.loadCurrencies = this.loadCurrencies.bind(this);
         this.submit = this.submit.bind(this);
     }
 
-    loadCurrencies() {
-        const currencies = [
-            {label: 'GBP', value: 'GBP'},
-            {label: 'USD', value: 'USD'},
-            {label: 'BRL', value: 'BRL'}
+    loadDepositOptions() {
+        const options = [
+            {value: 'fnight', label: '1st night'},
+            {value: 'bnight', label: 'Night before'},
         ];
 
-        this.setState({currencies: currencies});
+        this.setState({depositOptions: options});
     }
 
     submit(e) {
@@ -51,8 +39,8 @@ class Payment extends Component {
         this.props.nextStep(this.state);
     }
 
-    componentDidMount() {
-        this.loadCurrencies();
+    componentWillMount() {
+        this.loadDepositOptions();
     }
 
     render() {
@@ -61,108 +49,59 @@ class Payment extends Component {
                 <Form>
                     <form onSubmit={(e) => this.submit(e)}>
                         <Half>
+                            <p>Rate name</p>
+                            <input required onChange={(e) => this.setState({rateName: e.target.value})} />
                             <section>
                                 <HalfInput>
-                                    <p>Time before cancellation</p>
-                                    <InputMask
-                                        onChange={(e) => this.setState({timeBefore: e.target.value})}
-                                        required
-                                        mask="99"
-                                        alwaysShowMask
-                                        maskChar="_"
-                                    />
-                                </HalfInput>
-                                <HalfInput noTitle>
+                                    <p>Deposit</p>
                                     <Select
-                                        options={this.state.timeBeforeTypes}
+                                        options={this.state.depositOptions}
                                         styles={selectStyles}
-                                        onChange={e => this.setState({timeBeforeType: e.value})}
+                                        onChange={e => this.setState({deposit: e.value})}
                                         placeholder=''
+                                    />  
+                                </HalfInput>
+                                <HalfInput withIcon>
+                                    <p>Cancellation</p>
+                                    <InputMask
+                                        mask="99.99"
+                                        onChange={(e) => this.setState({cancellation: e.target.value})}
                                     />
+                                    <h1>$</h1>
                                 </HalfInput>
                             </section>
-                            <Checkbox>
-                                <input
-                                    type="checkbox"
-                                    onChange={(e) => this.setState({pets: !this.state.pets})}
-                                />
-                                <p>Pets are allowed</p>
-                            </Checkbox>
-                            <p>Currency type*</p>
-                            <Select
-                                options={this.state.currencies}
-                                styles={selectStyles}
-                                onChange={e => this.setState({currency: e.value})}
-                                placeholder=''
-                            />
                             <section>
-                                <Checkbox>
-                                    <input
-                                        type="checkbox"
-                                        onChange={(e) => this.setState({americanExpress: !this.state.americanExpress})}
+                                <HalfInput withIcon>
+                                    <p>Price per pet</p>
+                                    <InputMask
+                                        mask="99.99"
+                                        onChange={(e) => this.setState({pet: e.target.value})}
                                     />
-                                    <p>American Express</p>
-                                </Checkbox>
-                                <Checkbox>
-                                    <input
-                                        type="checkbox"
-                                        onChange={(e) => this.setState({maestro: !this.state.maestro})}
+                                    <h1>$</h1>
+                                </HalfInput>
+                                <HalfInput withIcon>
+                                    <p>Price per guest</p>
+                                    <InputMask
+                                        mask="99.99"
+                                        onChange={(e) => this.setState({guest: e.target.value})}
                                     />
-                                    <p>Maestro</p>
-                                </Checkbox>
-                            </section>
-                            <section>
-                                <Checkbox>
-                                    <input
-                                        type="checkbox"
-                                        onChange={(e) => this.setState({visa: !this.state.visa})}
-                                    />
-                                    <p>Visa</p>
-                                </Checkbox>
-                                <Checkbox>
-                                    <input
-                                        type="checkbox"
-                                        onChange={(e) => this.setState({discover: !this.state.discover})}
-                                    />
-                                    <p>Discover</p>
-                                </Checkbox>
-                            </section>
-                            <section>
-                                <Checkbox>
-                                    <input
-                                        type="checkbox"
-                                        onChange={(e) => this.setState({euro: !this.state.euro})}
-                                    />
-                                    <p>Euro/Mastercard</p>
-                                </Checkbox>
-                                <Checkbox>
-                                    <input
-                                        type="checkbox"
-                                        onChange={(e) => this.setState({unionPay: !this.state.unionPay})}
-                                    />
-                                    <p>UnionPay debit card</p>
-                                </Checkbox>
-                            </section>
-                            <section>
-                                <Checkbox>
-                                    <input
-                                        type="checkbox"
-                                        onChange={(e) => this.setState({diners: !this.state.diners})}
-                                    />
-                                    <p>Diners Club</p>
-                                </Checkbox>
-                                <Checkbox>
-                                    <input
-                                        type="checkbox"
-                                        onChange={(e) => this.setState({jcb: !this.state.jcb})}
-                                    />
-                                    <p>JCB</p>
-                                </Checkbox>
-                            </section>
+                                    <h1>$</h1>
+                                </HalfInput>
+                            </section>                         
                         </Half>
                         <Half>
                             <p>Name on which invoice should be generated (legal/company)*</p>
                             <input required onChange={(e) => this.setState({invoiceName: e.target.value})} />
+
+                            <Checkbox>
+                                <input
+                                    type="checkbox"
+                                    name="standardRate"
+                                    onChange={() => this.setState({standardRate: !this.state.standardRate})}
+                                    required
+                                />
+                                <p>Check as standard rate</p>
+                            </Checkbox>
 
                             <Checkbox>
                                 <input
