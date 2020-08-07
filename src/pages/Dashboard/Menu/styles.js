@@ -38,5 +38,6 @@ export const Item = styled.div`
     
     h2 {
         font-weight: 100;
+        font-size: 17px;
     }
 `;

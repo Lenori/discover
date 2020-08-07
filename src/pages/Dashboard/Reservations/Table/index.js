@@ -8,6 +8,14 @@ class Table extends Component {
 
         this.state = {
         }
+
+        this.openReservation = this.openReservation.bind(this);
+    }
+
+    openReservation(data) {
+        if (this.props.openReservation) {
+            this.props.openReservation(data);
+        }
     }
 
     render() {
@@ -26,7 +34,7 @@ class Table extends Component {
                     </tr>
                     
                     {this.props.data.map(reservation => (
-                        <tr>
+                        <tr onClick={() => this.openReservation(reservation.id)}>
                             <td><h2>{reservation.traveler}</h2><p>{reservation.id}</p></td>
                             <td>{reservation.site}</td>
                             <td>{reservation.reservationDate}</td>

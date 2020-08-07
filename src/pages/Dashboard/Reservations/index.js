@@ -1,18 +1,24 @@
 import React, {Component} from 'react';
 
-import {Content} from './styles';
+import {FaPrint, FaFileDownload} from 'react-icons/fa';
+
+import {Content, Info, Pagination, Page} from './styles';
 
 import Table from './Table';
+import Search from './Search';
+import Reservation from './Reservation';
 
-class Board extends Component {
+class Reservations extends Component {
     constructor() {
         super();
 
         this.state = {
-            reservations: []
+            reservations: [],
+            reservation: null
         }
 
         this.loadReservations = this.loadReservations.bind(this);
+        this.searchSubmit = this.searchSubmit.bind(this);
     }
 
     loadReservations() {
@@ -55,6 +61,10 @@ class Board extends Component {
         this.setState({reservations: data});
     }
 
+    searchSubmit(data) {
+        // call to update reservations data
+    }
+
     componentWillMount() {
         this.loadReservations();
     }
@@ -62,12 +72,48 @@ class Board extends Component {
     render() {
         return(
             <Content>
-                <h1>Reservations</h1>
+                {!this.state.reservation &&
+                    <>
+                    <h1>Reservations</h1>
                 
-                <Table data={this.state.reservations} />
+                    <Search searchSubmit={(data) => this.searchSubmit(data)} />
+    
+                    <Info>
+                        <p>Showing 10 results per page</p>
+    
+                        <div>
+                            <section>
+                                <FaPrint />
+                                <p>Print List</p>
+                            </section>
+                            
+                            <section>
+                                <FaFileDownload />
+                                <p>Download List</p>
+                            </section>
+                        </div>
+                    </Info>
+    
+                    <Table
+                        data={this.state.reservations}
+                        openReservation={(data) => this.setState({reservation: data})}
+                    />
+
+                    <Pagination>
+                        <Page active>1</Page>
+                        <Page>2</Page>
+                        <Page>3</Page>
+                        <Page>4</Page>
+                    </Pagination>
+                    </>
+                }
+
+                {this.state.reservation &&
+                    <Reservation reservation={this.state.reservation} />
+                }
             </Content>
         )
     }
 }
 
-export default Board;
+export default Reservations;

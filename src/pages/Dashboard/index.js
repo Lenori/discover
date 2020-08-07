@@ -6,13 +6,14 @@ import Menu from './Menu';
 
 import Board from './Board';
 import Reservations from './Reservations';
+import Accounting from './Accounting';
 
 class Dashboard extends Component {
     constructor() {
         super();
 
         this.state = {
-            menu: 'reservations'
+            menu: 'accounting'
         }
     }
 
@@ -28,8 +29,12 @@ class Dashboard extends Component {
                     <Board changeMenu={(e) => this.setState({menu: e})} />
                 }
 
-{               this.state.menu == 'reservations' &&
+                {this.state.menu == 'reservations' &&
                     <Reservations />
+                }
+
+                {this.state.menu == 'accounting' &&
+                    <Accounting />
                 }
             </Content>
         )
