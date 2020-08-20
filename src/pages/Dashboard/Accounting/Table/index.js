@@ -24,7 +24,7 @@ class Table extends Component {
                     </tr>
                     
                     {this.props.data.map(invoice => (
-                        <tr onClick={() => this.openinvoice(invoice.id)}>
+                        <tr>
                             <td><h2>{invoice.traveler}</h2><p>{invoice.id}</p></td>
                             <td>{invoice.period}</td>
                             <td>{invoice.issueDate}</td>

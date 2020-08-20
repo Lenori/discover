@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import {Content, Form, Banner} from './styles';
 
+import Header from '../../components/Header';
 import Signin from '../../components/Signin';
 import Signup from '../../components/Signup';
 
@@ -16,6 +17,8 @@ class Home extends Component {
 
     render() {
         return(
+            <>
+            <Header />
             <Content>
                 <Form>
                     {!this.state.signup &&
@@ -42,6 +45,7 @@ class Home extends Component {
                     </ul>
                 </Banner>
             </Content>
+            </>
         )
     }
 }
