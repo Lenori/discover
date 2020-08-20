@@ -16,7 +16,7 @@ class Property extends Component {
         super();
 
         this.state = {
-            step: 3,
+            step: 1,
             completed: []
         };
 
