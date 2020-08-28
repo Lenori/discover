@@ -10,6 +10,7 @@ class New extends Component {
         super();
 
         this.state = {
+            active: true,
             title: null,
             price: null,
             pax: null,

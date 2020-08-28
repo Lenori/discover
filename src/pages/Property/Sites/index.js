@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 
 import {toast} from 'react-toastify';
 
+import Switch from 'react-switch';
+
 import {Content, Form, Items, Site, Header, Body, Info, Buttons, SitesList, SiteItem, Controls, Span} from './styles';
 
 import Edit from './Edit';
@@ -98,7 +100,9 @@ class Sites extends Component {
                 stateTax: false,
                 countryTax: false,
                 otherTax: false,
-                sites: []
+                sites: [
+                    {siteName: 'teste', active: true}
+                ]
             }
         ];
 
@@ -232,6 +236,7 @@ class Sites extends Component {
                                             {site.sites.map((item, itemIndex) => (
                                                 <SiteItem>
                                                     <h2>{item.siteName}</h2>
+                                                    <Switch checked={item.active} />
                                                     <p onClick={() => this.setState({editSite: true, site: site, index: index, siteIndex: itemIndex})}>Edit</p>
                                                     <p onClick={() => this.deleteSite(index, itemIndex)}>Delete</p>
                                                 </SiteItem>
