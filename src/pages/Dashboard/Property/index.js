@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import {FaPhone, FaEnvelope, FaMapMarkerAlt} from 'react-icons/fa';
 
-import {Content, Main, MainProperty, MainSidebar, PropertyContent, PropertyHeader, PropertyContact, SidebarHeader} from './styles';
+import {Content, ContentHeader, Main, MainProperty, MainSidebar, PropertyContent, PropertyHeader, PropertyContact, SidebarHeader} from './styles';
 
 import Policies from './Policies';
 import Site from './Site';
@@ -84,8 +84,10 @@ class Property extends Component {
     render() {
         return(
             <Content>
-                <h1>Property Management</h1>
-
+                <ContentHeader>
+                  <h1>Property Management</h1>
+                  <button>Add new property</button>
+                </ContentHeader>
                 <Main>
 
                   <MainProperty>

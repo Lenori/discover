@@ -4,7 +4,7 @@ import {toast} from 'react-toastify';
 
 import Switch from 'react-switch';
 
-import {Content, Form, Items, Site, Header, Body, Info, Buttons, SitesList, SiteItem, Controls, Span} from './styles';
+import {Content, Form, Items, Site, Header, Body, Info, Buttons, SitesList, SiteItem, Controls, Span, AddSitesPop, NewSiteInput} from './styles';
 
 import Edit from './Edit';
 import EditSite from './EditSite';
@@ -19,6 +19,18 @@ class Sites extends Component {
             editSite: false,
             addSites: false,
             numberOfNewSites: null,
+            newSitesNames: [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
             new: false,
             sites: [],
             site: null,
@@ -34,6 +46,7 @@ class Sites extends Component {
         this.editSite = this.editSite.bind(this);
         this.deleteSiteType = this.deleteSiteType.bind(this);
         this.deleteSite = this.deleteSite.bind(this);
+        this.setSiteNames = this.setSiteNames.bind(this);
     }
 
     loadSites() {
@@ -121,10 +134,11 @@ class Sites extends Component {
 
     addSites() {
         const Newsites = [];
+        const sitesNames = this.state.newSitesNames;
 
-        for (let i = 1; i <= this.state.numberOfNewSites; i++) {
+        for (let i = 0; i <= this.state.numberOfNewSites - 1; i++) {
             let site = {
-                siteName: `New site ${i}`
+                siteName: sitesNames[i]
             };
 
             Newsites.push(site);
@@ -138,6 +152,16 @@ class Sites extends Component {
             sites: sites,
             addSites: null
         });
+    }
+
+    setSiteNames(value, index) {
+        const sitesNames = this.state.newSitesNames;
+
+        sitesNames[index] = value;
+
+        console.log(sitesNames);
+
+        this.setState({newSitesNames: sitesNames});
     }
 
     editSiteType(index, data) {
@@ -199,7 +223,49 @@ class Sites extends Component {
 
     render() {
         return(
-            <Content>
+            <Content>                
+                {this.state.addSites && 
+                    <>
+                    <AddSitesPop display>
+                        <h2>Add new site(s)</h2>
+
+                        <p>Please select how many sites would you like to add</p>
+
+                        <select onChange={(e) => this.setState({numberOfNewSites: e.target.value})}>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+
+                        {this.state.numberOfNewSites &&
+                            <>
+                                <p>What would be the name of the sites?</p>
+
+                                <NewSiteInput type="text" onChange={(e) => this.setSiteNames(e.target.value, 0)} display={1 <= this.state.numberOfNewSites ? true : false} />
+                                <NewSiteInput type="text" onChange={(e) => this.setSiteNames(e.target.value, 1)} display={2 <= this.state.numberOfNewSites ? true : false} />
+                                <NewSiteInput type="text" onChange={(e) => this.setSiteNames(e.target.value, 2)} display={3 <= this.state.numberOfNewSites ? true : false} />
+                                <NewSiteInput type="text" onChange={(e) => this.setSiteNames(e.target.value, 3)} display={4 <= this.state.numberOfNewSites ? true : false} />
+                                <NewSiteInput type="text" onChange={(e) => this.setSiteNames(e.target.value, 4)} display={5 <= this.state.numberOfNewSites ? true : false} />
+                                <NewSiteInput type="text" onChange={(e) => this.setSiteNames(e.target.value, 5)} display={6 <= this.state.numberOfNewSites ? true : false} />
+                                <NewSiteInput type="text" onChange={(e) => this.setSiteNames(e.target.value, 6)} display={7 <= this.state.numberOfNewSites ? true : false} />
+                                <NewSiteInput type="text" onChange={(e) => this.setSiteNames(e.target.value, 7)} display={8 <= this.state.numberOfNewSites ? true : false} />
+                                <NewSiteInput type="text" onChange={(e) => this.setSiteNames(e.target.value, 8)} display={9 <= this.state.numberOfNewSites ? true : false} />
+                                <NewSiteInput type="text" onChange={(e) => this.setSiteNames(e.target.value, 9)} display={10 <= this.state.numberOfNewSites ? true : false} />
+
+                                <button onClick={() => this.addSites()}>Submit</button>
+                            </>
+                        }
+                    </AddSitesPop>
+                    </>
+                }
+
                 {!this.state.edit && !this.state.new && !this.state.editSite &&
                     <Form>
                         <button onClick={() => this.setState({new: true})}>New site type</button>
@@ -221,13 +287,6 @@ class Sites extends Component {
                                                 <p onClick={() => this.setState({site: site, index: index, addSites: true})}>Add sites</p>
                                                 <p onClick={() => this.setState({site: site, index: index, edit: true})}>Edit</p>
                                                 <p onClick={() => this.deleteSiteType(index)}>Delete</p>
-                                            </Buttons>
-                                        }
-
-                                        {this.state.addSites && this.state.index == index &&
-                                            <Buttons>
-                                                <input type='number' min='1' max='5' onChange={(e) => this.setState({numberOfNewSites: e.target.value})} />
-                                                <p onClick={() => this.addSites()}>Done</p>
                                             </Buttons>
                                         }
                                     </Body>

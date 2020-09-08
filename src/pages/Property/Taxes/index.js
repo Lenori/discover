@@ -117,6 +117,7 @@ class Taxes extends Component {
                                         onChange={(e) => this.setTaxes('sales', 'percent', e.target.value)}
                                         value={this.state.sales.percent ? this.state.sales.percent : ''}
                                         mask="99"
+                                        placeholder="Enter value"
                                     />
                                     <h1>%</h1>
                                 </HalfInput>
@@ -125,6 +126,7 @@ class Taxes extends Component {
                                         onChange={(e) => this.setTaxes('sales', 'fix', e.target.value)}
                                         value={this.state.sales.fix ? this.state.sales.fix : ''}
                                         mask="99.99"
+                                        placeholder="Enter value"
                                     />
                                     <h1>$</h1>
                                 </HalfInput>
@@ -136,6 +138,7 @@ class Taxes extends Component {
                                         onChange={(e) => this.setTaxes('country', 'percent', e.target.value)}
                                         value={this.state.country.percent ? this.state.country.percent : ''}
                                         mask="99"
+                                        placeholder="Enter value"
                                     />
                                     <h1>%</h1>
                                 </HalfInput>
@@ -144,6 +147,7 @@ class Taxes extends Component {
                                         onChange={(e) => this.setTaxes('country', 'fix', e.target.value)}
                                         value={this.state.country.fix ? this.state.country.fix : ''}
                                         mask="99.99"
+                                        placeholder="Enter value"
                                     />
                                     <h1>$</h1>
                                 </HalfInput>
@@ -157,6 +161,7 @@ class Taxes extends Component {
                                         onChange={(e) => this.setTaxes('state', 'percent', e.target.value)}
                                         value={this.state.state.percent ? this.state.state.percent : ''}
                                         mask="99"
+                                        placeholder="Enter value"
                                     />
                                     <h1>%</h1>
                                 </HalfInput>
@@ -165,6 +170,7 @@ class Taxes extends Component {
                                         onChange={(e) => this.setTaxes('state', 'fix', e.target.value)}
                                         value={this.state.state.fix ? this.state.state.fix : ''}
                                         mask="99.99"
+                                        placeholder="Enter value"
                                     />
                                     <h1>$</h1>
                                 </HalfInput>
@@ -176,6 +182,7 @@ class Taxes extends Component {
                                         onChange={(e) => this.setTaxes('other', 'percent', e.target.value)}
                                         value={this.state.other.percent ? this.state.other.percent : ''}
                                         mask="99"
+                                        placeholder="Enter value"
                                     />
                                     <h1>%</h1>
                                 </HalfInput>
@@ -184,6 +191,7 @@ class Taxes extends Component {
                                         onChange={(e) => this.setTaxes('other', 'fix', e.target.value)}
                                         value={this.state.other.fix ? this.state.other.fix : ''}
                                         mask="99.99"
+                                        placeholder="Enter value"
                                     />
                                     <h1>$</h1>
                                 </HalfInput>
