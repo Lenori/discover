@@ -17,7 +17,7 @@ class Dashboard extends Component {
         super();
 
         this.state = {
-            menu: 'dashboard'
+            menu: 'calendar'
         }
     }
 

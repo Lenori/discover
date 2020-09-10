@@ -26,8 +26,13 @@ export const Form = styled.div`
 
     section {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
+
+        svg {
+            color: var(--secondary);
+            font-size: 40px;
+        }
     }
 
     p {
@@ -42,7 +47,6 @@ export const Form = styled.div`
         width: 100%;
         border: 1px solid #cccccc;
         border-radius: 8px;
-        margin: 10px 0 40px;
         padding: 20px;
         color: var(--primary);
         font-weight: 700;
@@ -74,7 +78,8 @@ export const Form = styled.div`
 `;
 
 export const HalfInput = styled.div`
-    width: 48%;
+    width: 40%;
+    margin: 0 10px 0 0;
     float: left;
     position: relative;
 
@@ -82,8 +87,15 @@ export const HalfInput = styled.div`
         margin-top: 30px !important;
     `}
 
+    ${props => props.withIcon && css `
+        input {
+            padding: 20px 20px 20px 80px !important;
+        }
+    `}
+
     input {
-        padding: 20px 20px 20px 80px !important;
+        padding: 20px;        
+        margin: 10px 10px 40px 0;
     }
 
     h1 {
