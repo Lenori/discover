@@ -206,6 +206,14 @@ class Sites extends Component {
         this.setState({sites: sites});
     }
 
+    toggleSite(index, itemIndex) {
+        const sites = this.state.sites;
+
+        sites[index].sites[itemIndex].active = !sites[index].sites[itemIndex].active;
+
+        this.setState({sites: sites});
+    }
+
     submit(e) {
         e.preventDefault();
 
@@ -295,7 +303,14 @@ class Sites extends Component {
                                             {site.sites.map((item, itemIndex) => (
                                                 <SiteItem>
                                                     <h2>{item.siteName}</h2>
-                                                    <Switch checked={item.active} />
+                                                    <Switch
+                                                        checked={item.active}
+                                                        onChange={() => this.toggleSite(index, itemIndex)}
+                                                        uncheckedIcon={false}
+                                                        checkedIcon={false}
+                                                        offColor={'#2d364c'}
+                                                        onColor={'#ff8913'}                                                    
+                                                    />
                                                     <p onClick={() => this.setState({editSite: true, site: site, index: index, siteIndex: itemIndex})}>Edit</p>
                                                     <p onClick={() => this.deleteSite(index, itemIndex)}>Delete</p>
                                                 </SiteItem>

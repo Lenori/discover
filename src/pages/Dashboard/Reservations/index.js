@@ -65,8 +65,22 @@ class Reservations extends Component {
         // call to update reservations data
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.loadReservations();
+
+        let params = new URLSearchParams(window.location.search);
+        let id = params.get('id');
+
+        this.setState({reservation: id});
+    }
+
+    componentDidUpdate() {
+        let params = new URLSearchParams(window.location.search);
+        let id = params.get('id');
+
+        if (id != this.state.reservation) {
+            this.setState({reservation: id});
+        }
     }
 
     render() {

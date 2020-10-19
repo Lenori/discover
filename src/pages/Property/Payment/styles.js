@@ -116,10 +116,23 @@ export const Checkbox = styled.div`
     margin: 0 0 30px 0;
 
     input {
-        width: 20px;
-        height: 30px;
-        margin: 0;        
-        color: var(--primary);
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 25px;
+        width: 25px;
+        margin: 0;
+    }
+
+    input:checked ~ span {
+        background-color: var(--secondary);
+    }
+
+    span {
+        height: 25px;
+        width: 25px;
+        background-color: transparent;
+        border: 2px solid var(--secondary);
     }
 
     p {

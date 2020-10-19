@@ -14,7 +14,6 @@ export const Content = styled.div`
     h3 {
         text-transform: uppercase;
         font-size: 15px;
-        font-weight: 600;
     }
 
     ul {

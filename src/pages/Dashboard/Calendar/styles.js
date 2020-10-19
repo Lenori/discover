@@ -88,6 +88,19 @@ export const SiteHeader = styled.div`
     }
 `;
 
+export const AddRateContent = styled.div`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    background-color: #000000c2;
+`;
+
 export const AddRatePop = styled.div`
     position: absolute;
     background-color: white;
@@ -96,11 +109,8 @@ export const AddRatePop = styled.div`
     justify-content: center;
     display: flex;
     z-index: 2000;
-    top: 50%;
-    left: 50%;
     padding: 40px;
     border-radius: 10px;
-    transform: translate(-50%, -50%);
     width: 600px;
 
     h2 {

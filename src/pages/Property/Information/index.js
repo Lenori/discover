@@ -295,7 +295,7 @@ class PropertyInformation extends Component {
                             />                            
 
                             <Controls>
-                                <Span disabled>Previous</Span>
+                                
                                 <Span onClick={() => this.props.saveDraft(this.state)}>Save as draft</Span>
 
                                 <button>Proceed</button>

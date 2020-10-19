@@ -18,10 +18,6 @@ export const Item = styled.div`
     padding: 20px 0;
     width: 25%;
 
-    h3 {
-        font-weight: 600;
-    }
-
     section {
         display: flex;
         align-items: center;

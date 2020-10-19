@@ -17,7 +17,25 @@ class Dashboard extends Component {
         super();
 
         this.state = {
-            menu: 'calendar'
+            menu: 'dashboard'
+        }
+    }
+
+    componentWillMount() {
+        const menu = this.props.match.params.menu;
+
+        if (menu) {
+            this.setState({menu: menu});
+        }
+    }
+
+    componentDidUpdate() {
+        const menu = this.props.match.params.menu;
+
+        if (menu && this.state.menu != menu) {
+            this.setState({menu: menu});
+        } else if (!menu && this.state.menu != 'dashboard') {
+            this.setState({menu: 'dashboard'});
         }
     }
 

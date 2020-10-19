@@ -65,7 +65,6 @@ export const SiteInfo = styled.div`
                     text-transform: uppercase;
                     border-bottom: 1px solid #a7a7a7;
                     padding: 0 0 10px;
-                    font-weight: 600;
                     
                     &:last-of-type {
                         text-align: right !important;

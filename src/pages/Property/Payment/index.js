@@ -100,6 +100,7 @@ class Payment extends Component {
                                     onChange={() => this.setState({standardRate: !this.state.standardRate})}
                                     required
                                 />
+                                <span></span>
                                 <p>Check as standard rate</p>
                             </Checkbox>
 
@@ -108,7 +109,8 @@ class Payment extends Component {
                                     type="checkbox"
                                     name="correctInformation"
                                     required
-                                />
+                                />                                
+                                <span></span>
                                 <p>I have agreed that all information provided is correct to my knowledge</p>
                             </Checkbox>
                             <Checkbox>
@@ -116,7 +118,8 @@ class Payment extends Component {
                                     type="checkbox"
                                     name="TermsConditions"
                                     required
-                                />
+                                />                                
+                                <span></span>
                                 <p>I accept <a href='#'>Terms & Conditions</a> and <a href='#'>Privacy Policy</a></p>
                             </Checkbox>
 

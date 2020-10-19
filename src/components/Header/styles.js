@@ -5,14 +5,14 @@ export const Content = styled.div`
     align-items: center;
     justify-content: space-between;    
     width: 100%;
-    padding: 35px 90px;
+    padding: 20px 90px;
 
     ${props => props.absolute && css`
         position: absolute;
     `}
 
     img {
-        width: 160px;
+        width: 120px;
     }
 `;
 

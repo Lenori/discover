@@ -46,6 +46,14 @@ class Taxes extends Component {
         this.setState({taxes: taxes});
     }
 
+    isOdd(num) {
+        if (num % 2 == 0) {
+            return false;
+        } else {
+            return true;
+        };
+    }
+
     submit(e) {
         e.preventDefault();
 
@@ -60,7 +68,7 @@ class Taxes extends Component {
                         <Half>
                             {this.state.taxes.map((tax, index) => (
                                 <>
-                                    {index < 2 &&
+                                    {this.isOdd(index + 1) &&
                                         <section>
                                             <HalfInput>
                                                 <p>Tax name</p>
@@ -91,7 +99,7 @@ class Taxes extends Component {
                         <Half>
                             {this.state.taxes.map((tax, index) => (
                                 <>
-                                    {index >= 2 &&
+                                    {!this.isOdd(index + 1) &&
                                         <section>
                                             <HalfInput>
                                                 <p>Tax name</p>

@@ -8,6 +8,10 @@ export const Content = styled.div`
     background-color: var(--primary);
     flex-direction: column;
     min-height: 100vh;
+
+    a {
+        width: 100%;
+    }
 `;
 
 export const Item = styled.div`
@@ -51,12 +55,16 @@ export const SubMenus = styled.div`
     flex-direction: column;
     width: 100%;
     color: white;
+
+    a {
+        width: 70% !important;
+    }
 `;
 
 export const SubMenu = styled.h3`
     color: white;
     cursor: pointer;
-    width: 70%;
+    width: 100%;
     text-align: left;
     padding: 20px;
     margin: 10px 0 0 0;

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {Content, ContentHeader, SiteHeader, SiteContent, AddRatePop, RatePopInputs, RatePopDays, Day, RatePopButton} from './styles';
+import {Content, ContentHeader, SiteHeader, SiteContent, AddRateContent, AddRatePop, RatePopInputs, RatePopDays, Day, RatePopButton} from './styles';
 
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
@@ -251,9 +251,9 @@ class Rate extends Component {
 
     render() {
         return(
-            <Content>
-                
-                {this.state.addRate &&
+            <>
+            {this.state.addRate &&
+                <AddRateContent>
                     <AddRatePop>
                         <h2>Add differential rate</h2>
                         <p>Rate differentials between site types</p>
@@ -317,8 +317,9 @@ class Rate extends Component {
 
                         <RatePopButton onClick={() => this.submitRate()}>SUBMIT</RatePopButton>
                     </AddRatePop>
-                }
-
+                </AddRateContent>
+            }
+            <Content>
                 <ContentHeader>
                     <h1>Price and Availability Calendar</h1>
                     <button onClick={() => this.setState({addRate: true})}>New rate plan</button>
@@ -347,6 +348,7 @@ class Rate extends Component {
                     </SiteContent>
                 ))}
             </Content>
+            </>
         )
     }
 }

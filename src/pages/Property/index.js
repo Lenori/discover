@@ -6,6 +6,8 @@ import {toast} from 'react-toastify';
 
 import Steps from './Steps';
 
+import Header from '../../components/Header';
+
 import PropertyInformation from './Information';
 import Taxes from './Taxes';
 import Sites from './Sites';
@@ -115,6 +117,8 @@ class Property extends Component {
 
     render() {
         return(
+            <>
+            <Header internal />
             <Content>
                 <Steps
                     step={this.state.step}
@@ -151,6 +155,7 @@ class Property extends Component {
                     />
                 }
             </Content>
+            </>
         )
     }
 }

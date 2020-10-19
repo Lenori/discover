@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 import {Content, Confirmed, Cancelled, Expired} from './styles';;
 
@@ -34,8 +35,11 @@ class Table extends Component {
                     </tr>
                     
                     {this.props.data.map(reservation => (
-                        <tr onClick={() => this.openReservation(reservation.id)}>
-                            <td><h2>{reservation.traveler}</h2><p>{reservation.id}</p></td>
+                        <tr>
+                            <td>
+                                <h2>{reservation.traveler}</h2>
+                                <Link to={`/dashboard/reservations?id=${reservation.id}`}><p>{reservation.id}</p></Link>
+                            </td>
                             <td>{reservation.site}</td>
                             <td>{reservation.reservationDate}</td>
                             <td>{reservation.bookingDate}</td>
