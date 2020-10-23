@@ -17,7 +17,8 @@ class Dashboard extends Component {
         super();
 
         this.state = {
-            menu: 'dashboard'
+            menu: 'dashboard',
+            showMenu: false
         }
     }
 
@@ -25,7 +26,7 @@ class Dashboard extends Component {
         const menu = this.props.match.params.menu;
 
         if (menu) {
-            this.setState({menu: menu});
+            this.setState({menu: menu, showMenu: false});
         }
     }
 
@@ -42,11 +43,16 @@ class Dashboard extends Component {
     render() {
         return(
             <>
-            <Header internal />
+            <Header
+                internal
+                toggleMenu={() => this.setState({showMenu: !this.state.showMenu})}
+            />
             <Content>
                 <Menu
                     menu={this.state.menu}
                     menuChange={(e) => this.setState({menu: e})}
+                    showMenu={this.state.showMenu}
+                    toggleMenu={() => this.setState({showMenu: !this.state.showMenu})}
                 />
 
                 {this.state.menu == 'dashboard' &&

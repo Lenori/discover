@@ -18,6 +18,14 @@ export const Item = styled.div`
     padding: 20px 0;
     width: 25%;
 
+    @media (max-width: 900px) {
+        width: 50%;
+    }
+
+    @media (max-width: 600px) {
+        width: 100%;
+    }
+
     h3 {
         font-weight: 600;
     }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
-import {FaChartArea, FaTag, FaBookmark, FaHome, FaBook} from 'react-icons/fa';
+import {FaChartArea, FaTag, FaBookmark, FaHome, FaBook, FaTimes} from 'react-icons/fa';
 
 import {Content, Item, SubMenus, SubMenu} from './styles';
 
@@ -15,7 +15,8 @@ class Menu extends Component {
 
     render() {
         return(
-            <Content>
+            <Content show={this.props.showMenu}>
+                <FaTimes onClick={() => this.props.toggleMenu()} />
                 <Link to='/dashboard'>
                     <Item
                         selected={this.props.menu == 'dashboard' ? true : false}>

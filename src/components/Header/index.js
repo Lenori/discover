@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FaChevronDown} from 'react-icons/fa';
+import {FaChevronDown, FaTimes, FaBars} from 'react-icons/fa';
 
 import {Content, Menu, User} from './styles';
 
@@ -18,6 +18,10 @@ class Header extends Component {
         return(
             <Content absolute={this.props.internal ? false : true}>
                 <img src={Logo} />
+
+                {this.props.internal &&
+                    <FaBars onClick={() => this.props.toggleMenu()} />
+                }
 
                 {!this.props.internal &&
                     <Menu>

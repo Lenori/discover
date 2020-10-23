@@ -33,6 +33,14 @@ export const Content = styled.div`
                 text-transform: uppercase;
                 padding: 20px;
                 border: 1px solid #cacaca;
+
+                svg {
+                    margin: 0 10px;
+                }
+
+                input {
+                    padding: 10px;
+                }
             }
 
             td {                

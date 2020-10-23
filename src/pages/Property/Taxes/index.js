@@ -86,10 +86,6 @@ class Taxes extends Component {
                                                 />
                                                 <h1>$</h1>
                                             </HalfInput>
-        
-                                            {index == this.state.taxes.length - 1 &&
-                                                <FaPlusCircle onClick={() => this.addTaxes()} />
-                                            }
                                         </section>
                                     }
                                 </>
@@ -117,14 +113,13 @@ class Taxes extends Component {
                                                 />
                                                 <h1>$</h1>
                                             </HalfInput>
-        
-                                            {index == this.state.taxes.length - 1 &&
-                                                <FaPlusCircle onClick={() => this.addTaxes()} />
-                                            }
                                         </section>
                                     }
                                 </>
                             ))}
+
+                            
+                            <FaPlusCircle onClick={() => this.addTaxes()} />
 
                             <Controls>
                                 <Span onClick={() => this.props.previous()}>Previous</Span>

@@ -12,6 +12,35 @@ export const Content = styled.div`
     a {
         width: 100%;
     }
+
+    svg {
+        display: none;
+        color: white;
+        font-size: 24px;
+        position: absolute;
+        background-color: var(--primary);
+        padding: 10px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        left: 103%;
+        top: 7px;
+    }
+
+    @media (max-width: 1350px) {
+        ${props => !props.show && css `
+            display: none !important;
+        `}
+
+        width: 320px;
+        position: fixed;
+        top: 0;
+        z-index: 300;
+
+        svg {
+            display: block !important;
+        }
+    }
 `;
 
 export const Item = styled.div`
@@ -39,7 +68,17 @@ export const Item = styled.div`
 
     svg {
         margin: 0 20px 0 0;
-        font-size: 20px;
+        font-size: 20px !important;
+        display: block !important;
+
+        position: relative !important;
+        background-color: unset !important;
+        padding:  unset !important;
+        width: unset !important;
+        height: unset !important;
+        border-radius: unset !important;
+        left: unset !important;
+        top: unset !important;
     }
     
     h2 {

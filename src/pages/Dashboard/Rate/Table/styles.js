@@ -25,6 +25,13 @@ export const Content = styled.div`
                 background-color: unset !important;
             }
 
+            @media (max-width: 1150px) {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
             th {
                 color: var(--primary);
                 font-weight: 400;

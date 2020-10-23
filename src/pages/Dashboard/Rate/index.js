@@ -3,13 +3,15 @@ import React, {Component} from 'react';
 import {Content, ContentHeader} from './styles';
 
 import Table from './Table';
+import New from './New';
 
 class Rate extends Component {
     constructor() {
         super();
 
         this.state = {
-            plans: []
+            plans: [],
+            new: false
         }
 
         this.loadPlans = this.loadPlans.bind(this);
@@ -44,12 +46,18 @@ class Rate extends Component {
             <Content>
                 <ContentHeader>
                     <h1>Rate plans</h1>
-                    <button>Add new plan</button>
+                    <button onClick={() => this.setState({new: true})}>Add new plan</button>
                 </ContentHeader>
 
-                <Table
-                    data={this.state.plans}
-                />
+                {!this.state.new &&
+                    <Table
+                        data={this.state.plans}
+                    />
+                }
+
+                {this.state.new &&
+                    <New />
+                }
             </Content>
         )
     }

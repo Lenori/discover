@@ -4,7 +4,7 @@ export const Content = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    width: 100%;
+    width: 80%;
     background-color: var(--tertiary);
     padding: 80px 40px;
     flex-direction: column;
@@ -14,6 +14,10 @@ export const Content = styled.div`
         font-size: 35px;
         color: var(--primary);
     }
+
+    @media (max-width: 1350px) {
+        width: 100%;
+    }
 `;
 
 export const Reservations = styled.section`
@@ -22,6 +26,15 @@ export const Reservations = styled.section`
     justify-content: flex-start;
     align-items: flex-end;
     width: 100%;
+
+    @media (max-width: 500px) {
+        flex-direction: column;
+        align-items: flex-start;
+        
+        p {
+            margin: 10px 0 0 0 !important;
+        }
+    }
 
     h2 {
         font-weight: 400;
@@ -49,6 +62,10 @@ export const GraphArea = styled.div`
     border: 1px solid #cecece;
     margin: 50px 0 40px;
 
+    @media (max-width: 950px) {
+        padding: 15px;
+    }
+
     h2 {
         font-weight: 400;
         font-size: 25px;
@@ -61,6 +78,10 @@ export const MonthInfo = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 100%;
+
+    @media (max-width: 950px) {
+        flex-direction: column;
+    }
 `;
 
 export const Info = styled.div`
@@ -72,6 +93,11 @@ export const Info = styled.div`
     padding: 20px;
     border-radius: 8px;
     border: 1px solid #cecece;
+
+    @media (max-width: 950px) {
+        width: 100%;
+        margin: 0 0 10px 0;
+    }
 
     svg {
         width: 30%;

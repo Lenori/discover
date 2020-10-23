@@ -11,7 +11,7 @@ import Reservation from '../pages/Reservation';
 export default function Routes() {
     return(
         <Switch>
-            <Route path="/" exact component={Home} />
+            <Route path="/" exact component={Dashboard} />
             <Route path="/property" component={Property} />
             <Route path="/dashboard" exact component={Dashboard} />
             <Route path="/dashboard/:menu" component={Dashboard} />

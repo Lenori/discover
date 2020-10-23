@@ -4,10 +4,14 @@ export const Content = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    width: 100%;
+    width: 80%;
     background-color: var(--tertiary);
     padding: 80px 40px 0;
     flex-direction: column;
+
+    @media (max-width: 1350px) {
+        width: 100%;
+    }
 
     h1 {
         font-weight: 400;
@@ -26,6 +30,15 @@ export const ContentHeader = styled.div`
     justify-content: space-between;
     width: 100%;
     margin: 0 0 20px 0;
+
+    @media (max-width: 1100px) {
+        flex-direction: column;
+        align-items: flex-start;
+
+        button {
+            margin: 20px 0 0 0;
+        }
+    }
 
     button {
         background-color: var(--secondary);
@@ -57,6 +70,16 @@ export const SiteHeader = styled.div`
     width: 100%;
     margin: 0 0 20px 0;    
 
+    @media (max-width: 750px) {
+        flex-direction: column;
+        align-items: flex-start;
+
+        button {
+            margin: 20px 0 0 0;
+        }
+    }
+
+
     h3 {
         font-weight: 400;
         color: var(--primary);
@@ -67,7 +90,25 @@ export const SiteHeader = styled.div`
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 20%;
+        width: 40%;
+
+        @media (max-width: 750px) {
+            width: 80%;
+            margin: 20px 0 0 0;
+
+            section {
+                justify-content: flex-start !important;
+            }
+        }
+
+        @media (max-width: 500px) {
+            flex-direction: column;
+            align-items: flex-start;
+
+            section {
+                margin: 0 0 20px 0;
+            }
+        }
 
         section {
             display: flex;

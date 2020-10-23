@@ -5,12 +5,7 @@ export const Content = styled.div`
 `;
 
 export const Half = styled.div`
-    width: 40%;    
-
-    svg {
-        color: var(--secondary);
-        font-size: 40px;
-    }
+    width: 40%;
 
     @media (max-width: 1600px) {
         width: 48%;
@@ -31,12 +26,11 @@ export const Form = styled.div`
 
     section {
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
         align-items: center;
 
-        @media (max-width: 720px) {
+        @media (max-width: 900px) {
             flex-direction: column;
-            align-items: flex-start;
         }
     }
 
@@ -52,6 +46,7 @@ export const Form = styled.div`
         width: 100%;
         border: 1px solid #cccccc;
         border-radius: 8px;
+        margin: 10px 0 40px;
         padding: 20px;
         color: var(--primary);
         font-weight: 700;
@@ -78,17 +73,16 @@ export const Form = styled.div`
 
         @media (max-width: 1250px) {
             flex-direction: column;
-        } 
+        }   
     }
 `;
 
 export const HalfInput = styled.div`
-    width: 40%;
-    margin: 0 10px 0 0;
+    width: 48%;
     float: left;
     position: relative;
 
-    @media (max-width: 720px) {
+    @media (max-width: 900px) {
         width: 100%;
     }
 
@@ -100,21 +94,56 @@ export const HalfInput = styled.div`
         input {
             padding: 20px 20px 20px 80px !important;
         }
+
+        h1 {
+            position: absolute;
+            bottom: 50px;
+            left: 25px;
+            font-size: 30px;
+            color: #c1c1c1;
+            border-right: 1px solid;
+            padding-right: 20px;
+        }
     `}
+`;
+
+export const Checkbox = styled.div`
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    width: 100%;
+    color: var(--primary);
+    margin: 0 0 30px 0;
 
     input {
-        padding: 20px;        
-        margin: 10px 10px 40px 0;
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 25px;
+        width: 25px;
+        margin: 0;
     }
 
-    h1 {
-        position: absolute;
-        bottom: 50px;
-        left: 25px;
-        font-size: 30px;
-        color: #c1c1c1;
-        border-right: 1px solid;
-        padding-right: 20px;
+    input:checked ~ span {
+        background-color: var(--secondary);
+    }
+
+    span {
+        height: 25px;
+        width: 25px;
+        background-color: transparent;
+        border: 2px solid var(--secondary);
+    }
+
+    p {
+        font-weight: 300;
+        font-size: 20px;
+        margin: 0 0 0 10px;
+
+        a {
+            color: var(--secondary);
+            font-weight: 700;
+        }
     }
 `;
 
@@ -134,7 +163,7 @@ export const Controls = styled.div`
 
     @media (max-width: 900px) {
         flex-direction: column;
-    } 
+    }
 `;
 
 export const Span = styled.span`
@@ -146,7 +175,7 @@ export const Span = styled.span`
 
     @media (max-width: 900px) {
         margin: 0 0 40px;
-    } 
+    }
 
     ${props => props.disabled && css `
         color: grey;

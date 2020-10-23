@@ -82,6 +82,11 @@ export const Body = styled.div`
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
+
+    @media (max-width: 950px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 `;
 
 export const Info = styled.div`
@@ -90,6 +95,10 @@ export const Info = styled.div`
     align-items: flex-start;
     justify-content: space-between;
     flex-direction: column;
+
+    @media (max-width: 950px) {
+        width: 100%;
+    }
 
     p {
         font-weight: 200;
@@ -109,6 +118,11 @@ export const Buttons = styled.div`
 
     @media (max-width: 1250px) {
         width: 30%;
+    }
+
+    @media (max-width: 950px) {
+        margin: 20px 0 0 0;
+        width: 100%;
     }
 
     p {
@@ -201,7 +215,8 @@ export const Span = styled.span`
 `;
 
 export const AddSitesPop = styled.div`
-    position: absolute;
+    position: fixed;
+    width: 420px;
     background-color: white;
     flex-direction: column;
     align-items: center;
@@ -213,6 +228,10 @@ export const AddSitesPop = styled.div`
     padding: 40px;
     border-radius: 10px;
     transform: translate(-50%, -50%);
+
+    @media (max-width: 450px) {
+        width: 380px;
+    }
 
     h2 {
         font-weight: 200;

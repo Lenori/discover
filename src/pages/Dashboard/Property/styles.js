@@ -4,10 +4,14 @@ export const Content = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    width: 100%;
+    width: 80%;
     background-color: var(--tertiary);
     padding: 80px 40px 0;
     flex-direction: column;
+
+    @media (max-width: 1350px) {
+        width: 100%;
+    }
 
     h1 {
         font-weight: 400;
@@ -25,6 +29,10 @@ export const Main = styled.div`
     align-items: flex-start;
     justify-content: space-between;
     width: 100%;
+
+    @media (max-width: 1650px) {
+        flex-direction: column;
+    }
 `;
 
 export const MainProperty = styled.div`
@@ -33,6 +41,11 @@ export const MainProperty = styled.div`
     justify-content: flex-start;
     width: 60%;
     flex-direction: column;
+
+    @media (max-width: 1650px) {
+        width: 100%;
+        margin: 0 0 20px 0;
+    }
 `;
 
 export const MainSidebar = styled.div`
@@ -41,6 +54,10 @@ export const MainSidebar = styled.div`
     justify-content: flex-start;
     width: 35%;
     flex-direction: column;
+
+    @media (max-width: 1650px) {
+        width: 100%;
+    }
 `;
 
 export const PropertyContent = styled.div`
@@ -84,6 +101,14 @@ export const PropertyHeader = styled.div`
         width: 100%;
         margin: 0 0 5px 0;
 
+        @media (max-width: 650px) {
+            :first-of-type {
+                flex-direction: column;
+                align-items: flex-start;
+                margin: 0 0 20px 0;
+            }
+        }
+
         h2 {
             margin-right: 20px;
         }
@@ -105,6 +130,11 @@ export const PropertyContact = styled.div`
     justify-content: space-between;
     width: 100%;
     margin: 10px 0 20px;
+
+    @media (max-width: 750px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
     section {
         display: flex;
@@ -196,6 +226,15 @@ export const ContentHeader = styled.div`
     justify-content: space-between;
     width: 100%;
     margin: 0 0 20px 0;
+
+    @media (max-width: 750px) {
+        flex-direction: column;
+        align-items: flex-start;
+
+        button {
+            margin: 20px 0 0 0;
+        }
+    }
 
     button {
         background-color: var(--secondary);

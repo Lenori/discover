@@ -29,6 +29,15 @@ export const Header = styled.div`
     justify-content: space-between;
     margin: 0 0 50px 0;
 
+    @media (max-width: 650px) {
+        flex-direction: column;
+        align-items: flex-start;
+
+        p {
+            margin: 10px 0 0 0;
+        }
+    }
+
     h2 {
         font-weight: 600;
         font-size: 30px;
@@ -46,6 +55,11 @@ export const Body = styled.div`
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
+
+    @media (max-width: 650px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 `;
 
 export const Info = styled.div`
@@ -58,6 +72,11 @@ export const Info = styled.div`
     p {
         font-weight: 200;
         font-size: 20px;
+    }
+
+    @media (max-width: 650px) {
+        margin: 0 0 20px 0;
+        width: 100%;
     }
 `;
 
@@ -73,6 +92,10 @@ export const Buttons = styled.div`
 
     @media (max-width: 1250px) {
         width: 30%;
+    }
+
+    @media (max-width: 650px) {
+        width: 100%;
     }
 
     p {
@@ -117,6 +140,14 @@ export const SiteItem = styled.div`
     border-radius: 8px;
     background-color: #161f35;
     margin: 10px 0 0 0;
+
+    @media (max-width: 500px) {
+        flex-direction: column;
+
+        p {
+            margin: 10px 0 0;
+        }
+    }
 
     p {
         font-weight: 600;

@@ -10,6 +10,15 @@ export const Content = styled.div`
     background-color: white;
     border-radius: 8px;
     margin: 30px 0 0 0;
+
+    .react-datepicker-wrapper {
+        width: 100%;
+    }
+
+    @media (max-width: 1050px) {
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 export const Block = styled.div`
@@ -18,6 +27,17 @@ export const Block = styled.div`
     justify-content: flex-start;
     margin: 0 30px 0 0;
     flex-direction: column;
+    width: 20%;
+
+    @media (max-width: 1050px) {
+        width: 100%;
+        align-items: center;
+        margin: 0 0 20px 0;
+
+        h1 {
+            margin: 0 0 10px 0 !important;
+        }
+    }
 
     h1 {
         font-weight: 400;
@@ -29,6 +49,7 @@ export const Block = styled.div`
 
 export const Section = styled.div`
     position: relative;
+    width: 100%;
 
     ${props => !props.selection && css`
         svg {
@@ -46,7 +67,7 @@ export const Section = styled.div`
         padding: 20px 20px 20px 50px;
         background-color: white;
         border-radius: 8px;
-        width: 300px;
+        width: 100%;
     }
 
     p {

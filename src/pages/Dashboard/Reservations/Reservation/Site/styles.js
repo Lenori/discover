@@ -23,6 +23,18 @@ export const SiteInfo = styled.div`
     align-items: flex-start;
     justify-content: space-between;
     width: 100%;
+
+    @media (max-width: 1050px) {
+        flex-direction: column;
+
+        div {
+            width: 100% !important;
+
+            &:last-of-type {
+                width: 100% !important;
+            }
+        }
+    }
     
     div {
         width: 30%;
@@ -59,6 +71,17 @@ export const SiteInfo = styled.div`
             border-spacing: 0 10px;
 
             tr {
+
+                @media (max-width: 725px) {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    margin: 0 0 20px 0;
+
+                    th, td {
+                        border: none !important;
+                    }
+                }
                 
                 th {
                     text-align: left;
@@ -103,6 +126,19 @@ export const Price = styled.div`
     flex-direction: row !important;
     width: 100% !important;
     margin: 0 0 3px 0 !important;
+
+    @media (max-width: 725px) {
+        align-items: center;
+        justify-content: center;
+    }
+
+    @media (max-width: 525px) {        
+        flex-direction: column !important;
+
+        p {
+            margin: 0 !important;
+        }
+    }
 
     ${props => props.total && css `
         margin: 10px 0 0 0 !important;

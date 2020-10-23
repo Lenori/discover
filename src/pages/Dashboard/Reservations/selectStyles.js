@@ -1,7 +1,7 @@
 export default {
     container: (base) => ({
         ...base,
-        width: 300
+        width: '100%'
     }),
 
     menu: () => ({

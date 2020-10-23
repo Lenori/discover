@@ -12,6 +12,9 @@ export const Content = styled.div`
         color: var(--primary);
     }
 
+    @media (max-width: 1200px) {
+        flex-direction: column;
+    }
 `;
 
 export const Sidebar = styled.div`
@@ -21,6 +24,10 @@ export const Sidebar = styled.div`
     width: 25%;
     margin: 50px 0 0;
     flex-direction: column;
+
+    @media (max-width: 1200px) {
+        width: 100%;
+    }
 `;
 
 export const SidebarItem = styled.div`
@@ -78,13 +85,23 @@ export const ReservationContent = styled.div`
     border-radius: 8px;
     border: 1px solid #cecece;
     margin: 50px 0 40px;
+
+    @media (max-width: 1200px) {
+        width: 100%;
+        margin: 50px 0 0 0 !important;
+    }
 `;
 
 export const Info = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: 100%;    
+
+    @media (max-width: 1020px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
     p {
         color: var(--primary);
@@ -95,6 +112,25 @@ export const Info = styled.div`
         align-items: center;
         justify-content: flex-end;
         width: 50%;
+
+        @media (max-width: 1020px) {
+            width: 100%;
+            justify-content: flex-start;
+            margin: 30px 0 0 0;
+
+            section {
+                margin: 0 30px 0 0 !important;
+            }
+        }
+
+        @media (max-width: 620px) {
+            flex-direction: column;
+            align-items: flex-start;
+
+            section {
+                margin: 0 30px 10px 0 !important;
+            }
+        }
 
         section {
             margin: 0 0 0 30px;
@@ -120,6 +156,10 @@ export const ReservationInfo = styled.section`
     align-items: flex-start;
     justify-content: flex-start;
     width: 30%;
+
+    @media (max-width: 1020px) {
+        width: 100%;
+    }
 
     div {
         display: flex;

@@ -4,10 +4,15 @@ export const Content = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    width: 100%;
+    width: 80%;
     background-color: var(--tertiary);
     padding: 80px 40px 0;
     flex-direction: column;
+    min-height: 100vh;
+
+    @media (max-width: 1350px) {
+        width: 100%;
+    }
 
     h1 {
         font-weight: 400;
@@ -26,6 +31,15 @@ export const ContentHeader = styled.div`
     justify-content: space-between;
     width: 100%;
     margin: 0 0 20px 0;
+
+    @media (max-width: 1100px) {
+        flex-direction: column;
+        align-items: flex-start;
+
+        button {
+            margin: 20px 0 0 0;
+        }
+    }
 
     button {
         background-color: var(--secondary);

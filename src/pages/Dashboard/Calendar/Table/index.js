@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 
 import {Content, IconTD, IconOverTD} from './styles';
 
-import {FaCircle, FaExclamationTriangle} from 'react-icons/fa';
+import {FaCircle, FaExclamationTriangle, FaPencilAlt} from 'react-icons/fa';
 
 class Table extends Component {
     constructor() {
         super();
 
         this.state = {
+            editIndex: null
         }
     }
 
@@ -16,11 +17,13 @@ class Table extends Component {
         return(
             <Content>
                 <table>
-                    {this.props.data.map(info => (
+                    {this.props.data.map((info, index) => (
                         <>
                             {info.icons &&
                                 <tr>
-                                    <th>{info.title}</th>
+                                    <th>
+                                        {info.title}
+                                    </th>
                                     {info.values.map(value => (
                                         <>
                                             {value == 1 &&
@@ -41,7 +44,9 @@ class Table extends Component {
 
                             {info.iconsOver &&
                                 <tr>
-                                    <th>{info.title}</th>
+                                    <th>
+                                        {info.title}
+                                    </th>
                                     {info.values.map(data => (
                                         <>
                                             {data.status == 1 &&
@@ -78,7 +83,18 @@ class Table extends Component {
 
                             {!info.icons && !info.iconsOver &&
                                 <tr>
-                                    <th>{info.title}</th>
+                                    <th>    
+                                        {this.state.editIndex != index &&
+                                            <>                                                
+                                                {info.title}
+                                                <FaPencilAlt onClick={() => this.setState({editIndex: index})} />
+                                            </>
+                                        }
+                                        
+                                        {this.state.editIndex == index &&
+                                            <input type='text' />
+                                        }
+                                    </th>
                                     {info.values.map(value => (
                                         <td>{value}</td>
                                     ))}

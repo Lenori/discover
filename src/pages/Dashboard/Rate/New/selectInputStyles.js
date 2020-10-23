@@ -1,7 +1,7 @@
 export default {
     container: (base) => ({
         ...base,
-        width: '100%'
+        marginBottom: 30
     }),
 
     menu: () => ({
@@ -19,11 +19,14 @@ export default {
         borderRadius: 8,
         border: 1,
         borderStyle: 'solid',
-        borderColor: '#cccccc'
+        borderColor: '#cccccc',
+        marginTop: 10,
+        marginBottom: 40
     }),
 
     input: () => ({
-        color: '#2d364c'
+        color: '#2d364c',
+        marginTop: 30
     }),
 
     singleValue: () => ({
