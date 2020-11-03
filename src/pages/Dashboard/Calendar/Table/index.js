@@ -9,8 +9,34 @@ class Table extends Component {
         super();
 
         this.state = {
-            editIndex: null
+            editIndex: null,
+            editValues: []
         }
+
+        this.populateEditValues = this.populateEditValues.bind(this);
+        this.changeEditValues = this.changeEditValues.bind(this);
+        this.saveEditValues = this.saveEditValues.bind(this);
+    }
+
+    populateEditValues(index) {
+        this.setState({
+            editValues: this.props.data[index].values,
+            editIndex: index
+        })
+    }
+
+    changeEditValues(index, value) {
+        let data = this.state.editValues;
+
+        data[index] = value;
+
+        this.setState({editValues: data});
+    };
+
+    saveEditValues(index) {
+        this.props.edit(index, this.state.editValues);
+
+        this.setState({editIndex: null});
     }
 
     render() {
@@ -87,16 +113,30 @@ class Table extends Component {
                                         {this.state.editIndex != index &&
                                             <>                                                
                                                 {info.title}
-                                                <FaPencilAlt onClick={() => this.setState({editIndex: index})} />
+                                                <FaPencilAlt onClick={() => this.populateEditValues(index)} />
                                             </>
                                         }
                                         
                                         {this.state.editIndex == index &&
-                                            <input type='text' />
+                                            <button onClick={() => this.saveEditValues(index)}>Save</button>
                                         }
                                     </th>
-                                    {info.values.map(value => (
-                                        <td>{value}</td>
+                                    {info.values.map((value, vIndex) => (                                        
+                                        <>
+                                        {this.state.editIndex != index &&                                            
+                                            <td>{value}</td>
+                                        }
+
+                                        {this.state.editIndex == index &&
+                                            <td>
+                                                <input
+                                                    type='text'
+                                                    value={this.state.editValues[vIndex]}
+                                                    onChange={(e) => this.changeEditValues(vIndex, e.target.value)}
+                                                />
+                                            </td>
+                                        }
+                                        </>                                        
                                     ))}
                                 </tr>
                             }

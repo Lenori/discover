@@ -40,6 +40,7 @@ class Rate extends Component {
 
         this.loadSites = this.loadSites.bind(this);
         this.addRate = this.addRate.bind(this);
+        this.editTableData = this.editTableData.bind(this);
         this.submitRate = this.submitRate.bind(this);
     }
 
@@ -245,6 +246,14 @@ class Rate extends Component {
         // API call to update rate data
     }
 
+    editTableData(sIndex, index, newData) {
+        let data = this.state.sites;
+
+        data[sIndex].data[index].values = newData;
+
+        this.setState({sites: data});
+    }
+
     componentWillMount() {
         this.loadSites();
     }
@@ -325,7 +334,7 @@ class Rate extends Component {
                     <button onClick={() => this.setState({addRate: true})}>New rate plan</button>
                 </ContentHeader>
 
-                {this.state.sites.map(site => (
+                {this.state.sites.map((site, sIndex) => (
                     <SiteContent>
                         <SiteHeader>
                             <h3>{site.name}</h3>
@@ -343,6 +352,7 @@ class Rate extends Component {
                             </div>
                         </SiteHeader>
                         <Table
+                            edit={(index, newData) => this.editTableData(sIndex, index, newData)}
                             data={site.data}
                         />
                     </SiteContent>

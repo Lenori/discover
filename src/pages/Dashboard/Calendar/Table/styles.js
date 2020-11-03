@@ -41,6 +41,15 @@ export const Content = styled.div`
                 input {
                     padding: 10px;
                 }
+
+                button {
+                    background-color: var(--secondary);
+                    border: none;
+                    color: white;
+                    text-transform: uppercase;
+                    font-size: 13px;
+                    padding: 15px 25px;
+                }
             }
 
             td {                
@@ -50,6 +59,10 @@ export const Content = styled.div`
                 border: 1px solid #cacaca;
                 text-align: center;
                 background-color: #f5f5f5;
+
+                input {
+                    max-width: 30px;
+                }
             }
         }
     }
